@@ -11,7 +11,7 @@ const MessageList = ({ messages, toggleStar, toggleSelected }) => {
           labels={ el.labels }
           message={ el }
           toggleStar={ toggleStar }
-          toggleSelected={ toggleSelected}
+          toggleSelected={ toggleSelected }
         />)}
       </div>
     )

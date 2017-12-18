@@ -5,6 +5,19 @@ class Toolbar extends Component {
     super(props)
   }
 
+  bulkSelectListen = () => {
+    console.log(this.props.bulkSelect);
+    this.props.bulkSelect()
+  }
+
+  bulkSelectStyle = () => {
+    //every
+    //console.log(this.props.every(this.bulkSelect));
+
+    //'fa-minus-square-o' : 'fa-square-o'
+    //{`fa ${ this.bulkSelectStyle() }`}
+  }
+
   render(){
     return (
       <div className="row toolbar">
@@ -15,7 +28,7 @@ class Toolbar extends Component {
           </p>
 
           <button className="btn btn-default">
-            <i className="fa fa-minus-square-o"></i>
+            <i onClick={ this.bulkSelectListen } className="fa-square-o"></i>
           </button>
 
           <button className="btn btn-default">

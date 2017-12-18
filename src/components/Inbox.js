@@ -33,10 +33,34 @@ class Inbox extends Component {
     this.setState( { messages: selectedMessages })
   }
 
+  isSelected = (msg) => {
+    return msg.selected ? true : false
+  }
+
+  bulkSelect = () => {
+
+    //if every selected, deselect all
+     if(this.state.messages.every(this.isSelected)){
+      let bulkSelectedMessages =  this.state.messages.map(el => {
+          el.selected = false
+          return el
+        })
+      this.setState({ messages: bulkSelectedMessages})
+    } else {
+      //if some or none are selected, select all
+      let bulkDeselectedMessages = this.state.messages.map(el => {
+        el.selected = true
+        return el
+      })
+      this.setState({ messages: bulkDeselectedMessages})
+    }
+
+  }
+
   render(){
     return (
       <div className="container">
-        <Toolbar />
+        <Toolbar messages={ this.state.messages } bulkSelect={ this.bulkSelect }/>
         <MessageList messages={ this.state.messages } toggleStar={ this.toggleStar } toggleSelected={ this.toggleSelected }/>
       </div>
     )
