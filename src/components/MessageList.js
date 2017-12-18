@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Message from './Message'
 
-class MessageList extends Component {
-  constructor(props) {
-    super(props)
-  }
+const MessageList = ({ messages }) => {
 
-  render(){
     return (
-      <Message />
+      <div>
+        { messages.map(el => <Message key={ el.id } message={ el }/>)}
+      </div>
     )
-  }
+
 }
 
 export default MessageList;
