@@ -8,14 +8,30 @@ class Inbox extends Component {
     super(props)
     this.state = { messages: MessageData }
   }
+
+  toggleMessage = (id) => {
+    let toggled = this.state.messages.map(el => {
+      //find THIS one
+      if(el.id === id){
+        //change to opposite
+        el.starred ? el.starred = false : el.starred = true
+      }
+      //return each message
+      return el
+    })
+    //update whole state, including the change
+    this.setState( { messages: toggled })
+  }
+
   render(){
     return (
       <div className="container">
         <Toolbar />
-        <MessageList messages={ this.state.messages }/>
+        <MessageList messages={ this.state.messages } toggleMessage={ this.toggleMessage }/>
       </div>
     )
   }
+
 }
 
 export default Inbox;
