@@ -23,11 +23,21 @@ class Inbox extends Component {
     this.setState( { messages: toggled })
   }
 
+  toggleSelected = (id) => {
+    let selectedMessages = this.state.messages.map(el => {
+      if(el.id === id){
+        el.selected ? el.selected = false : el.selected = true
+      }
+      return el
+    })
+    this.setState( { messages: selectedMessages })
+  }
+
   render(){
     return (
       <div className="container">
         <Toolbar />
-        <MessageList messages={ this.state.messages } toggleStar={ this.toggleStar }/>
+        <MessageList messages={ this.state.messages } toggleStar={ this.toggleStar } toggleSelected={ this.toggleSelected }/>
       </div>
     )
   }

@@ -15,22 +15,34 @@ class Message extends Component {
     })
   }
 
+  starListen = () => {
+    this.props.toggleStar(this.props.message.id);
+  }
+
   starStyle = () => {
     return this.props.message.starred ? 'fa-star' : 'fa-star-o'
   }
 
-  starListen = () => {
-    this.props.toggleStar(this.props.message.id);
+  selectListen = () => {
+    this.props.toggleSelected(this.props.message.id)
+  }
+
+  selectedStyle = () => {
+    return this.props.message.selected ? 'selected' : ''
+  }
+
+  checkedStyle = () => {
+    return this.props.message.selected ? 'checked' : ''
   }
 
 
   render(){
     return (
-      <div className={`row message ${ this.readUnread() }`}>
+      <div className={`row message ${ this.readUnread() } ${ this.selectedStyle() }`}>
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" />
+              <input onClick={ this.selectListen } type="checkbox" checked={`${ this.checkedStyle() }`}/>
             </div>
             <div className="col-xs-2">
               <i onClick={ this.starListen } className={`star fa ${ this.starStyle() }`}></i>
