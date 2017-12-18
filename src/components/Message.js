@@ -15,16 +15,12 @@ class Message extends Component {
     })
   }
 
-  starUnstar = () => {
+  starStyle = () => {
     return this.props.message.starred ? 'fa-star' : 'fa-star-o'
   }
 
-  starToggle = () => {
-    return this.props.message.starred ? this.props.message.starred = false : this.props.message.starred = true
-  }
-
-  findThisStar = () => {
-    this.props.toggleMessage(this.props.message.id);
+  starListen = () => {
+    this.props.toggleStar(this.props.message.id);
   }
 
 
@@ -37,7 +33,7 @@ class Message extends Component {
               <input type="checkbox" />
             </div>
             <div className="col-xs-2">
-              <i onClick={ this.findThisStar } className={`star fa ${ this.starUnstar() }`}></i>
+              <i onClick={ this.starListen } className={`star fa ${ this.starStyle() }`}></i>
             </div>
           </div>
         </div>

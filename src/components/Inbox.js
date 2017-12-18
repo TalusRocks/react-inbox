@@ -9,7 +9,7 @@ class Inbox extends Component {
     this.state = { messages: MessageData }
   }
 
-  toggleMessage = (id) => {
+  toggleStar = (id) => {
     let toggled = this.state.messages.map(el => {
       //find THIS one
       if(el.id === id){
@@ -27,7 +27,7 @@ class Inbox extends Component {
     return (
       <div className="container">
         <Toolbar />
-        <MessageList messages={ this.state.messages } toggleMessage={ this.toggleMessage }/>
+        <MessageList messages={ this.state.messages } toggleStar={ this.toggleStar }/>
       </div>
     )
   }
