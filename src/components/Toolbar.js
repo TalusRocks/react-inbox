@@ -29,8 +29,8 @@ class Toolbar extends Component {
             unread messages
           </p>
 
-          <button className="btn btn-default">
-            <i onClick={ this.bulkSelectListen } className={`fa ${ this.bulkSelectStyle() }`}></i>
+          <button onClick={ this.bulkSelectListen } className="btn btn-default">
+            <i className={`fa ${ this.bulkSelectStyle() }`}></i>
           </button>
 
           <button className="btn btn-default">
