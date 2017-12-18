@@ -10,8 +10,10 @@ class Message extends Component {
     return this.props.message.labels.map((label, i) => {
       return <span key={ i } className="label label-warning">{ label }</span>
     })
+  }
 
-
+  starUnstar = () => {
+    return this.props.message.starred ? 'fa-star' : 'fa-star-o'
   }
 
   render(){
@@ -23,7 +25,7 @@ class Message extends Component {
               <input type="checkbox" />
             </div>
             <div className="col-xs-2">
-              <i className="star fa fa-star-o"></i>
+              <i className={`star fa ${ this.starUnstar() }`}></i>
             </div>
           </div>
         </div>
