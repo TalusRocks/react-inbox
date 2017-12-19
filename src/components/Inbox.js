@@ -89,6 +89,16 @@ class Inbox extends Component {
     this.setState( { messages: keptMessages })
   }
 
+  unreadCount = () => {
+    let count = 0
+    this.state.messages.map(el => {
+      if(el.read === false){
+        count += 1
+      }
+    })
+    return count 
+  }
+
   render(){
     return (
       <div className="container">
@@ -99,6 +109,7 @@ class Inbox extends Component {
           markAsRead={ this.markAsRead }
           markAsUnread={ this.markAsUnread }
           deleteMessages={ this.deleteMessages }
+          unreadCount={ this.unreadCount }
         />
         <MessageList
           messages={ this.state.messages }
