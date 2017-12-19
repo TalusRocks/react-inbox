@@ -55,10 +55,23 @@ class Inbox extends Component {
     }
   }
 
+  markAsRead = () => {
+    //loop through messages, if selected=true, change read=true
+    //then re-write state 
+    let readMessages =
+    this.state.messages.map(el => {
+      if(el.selected){
+        el.read = true
+      }
+      return el
+    })
+    this.setState({ messages: readMessages })
+  }
+
   render(){
     return (
       <div className="container">
-        <Toolbar messages={ this.state.messages } bulkSelect={ this.bulkSelect } isSelected={ this.isSelected }/>
+        <Toolbar messages={ this.state.messages } bulkSelect={ this.bulkSelect } isSelected={ this.isSelected } markAsRead={ this.markAsRead }/>
         <MessageList messages={ this.state.messages } toggleStar={ this.toggleStar } toggleSelected={ this.toggleSelected }/>
       </div>
     )

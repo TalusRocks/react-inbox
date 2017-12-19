@@ -6,7 +6,6 @@ class Toolbar extends Component {
   }
 
   bulkSelectListen = () => {
-    console.log(this.props.bulkSelect);
     this.props.bulkSelect()
   }
 
@@ -18,6 +17,10 @@ class Toolbar extends Component {
     } else {
       return 'fa-square-o'
     }
+  }
+
+  markAsReadListen = () => {
+    this.props.markAsRead()
   }
 
   render(){
@@ -33,7 +36,7 @@ class Toolbar extends Component {
             <i className={`fa ${ this.bulkSelectStyle() }`}></i>
           </button>
 
-          <button className="btn btn-default">
+          <button onClick={ this.markAsReadListen } className="btn btn-default">
             Mark As Read
           </button>
 
