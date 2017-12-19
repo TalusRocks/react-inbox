@@ -96,7 +96,20 @@ class Inbox extends Component {
         count += 1
       }
     })
-    return count 
+    return count
+  }
+
+  updateLabels = (label) => {
+    let labeledMessages =
+    this.state.messages.map(el => {
+      if(el.selected){
+        if(!el.labels.includes(label)){
+          el.labels.push(label)
+        }
+      }
+      return el
+    })
+    this.setState( { messages: labeledMessages })
   }
 
   render(){
@@ -110,6 +123,7 @@ class Inbox extends Component {
           markAsUnread={ this.markAsUnread }
           deleteMessages={ this.deleteMessages }
           unreadCount={ this.unreadCount }
+          updateLabels={ this.updateLabels }
         />
         <MessageList
           messages={ this.state.messages }

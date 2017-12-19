@@ -35,12 +35,16 @@ class Toolbar extends Component {
     return this.props.unreadCount()
   }
 
+  getLabelValue = (e) => {
+    this.props.updateLabels(e.target.value)
+  }
+
   render(){
     return (
       <div className="row toolbar">
         <div className="col-md-12">
           <p className="pull-right">
-            <span className="badge badge">{ `${ this.unreadNum() }` }</span>
+            <span className="badge badge">{ `${ this.unreadNum() }` } </span>
             unread messages
           </p>
 
@@ -56,7 +60,7 @@ class Toolbar extends Component {
             Mark As Unread
           </button>
 
-          <select className="form-control label-select">
+          <select onChange={ this.getLabelValue } className="form-control label-select">
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
