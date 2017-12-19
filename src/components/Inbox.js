@@ -99,7 +99,7 @@ class Inbox extends Component {
     return count
   }
 
-  updateLabels = (label) => {
+  addLabels = (label) => {
     let labeledMessages =
     this.state.messages.map(el => {
       if(el.selected){
@@ -110,6 +110,21 @@ class Inbox extends Component {
       return el
     })
     this.setState( { messages: labeledMessages })
+  }
+
+  removeLabels = (label) => {
+
+    let unlabeledMessages =
+    this.state.messages.map(el => {
+      if(el.selected){
+        if(el.labels.includes(label)){
+          let index = el.labels.indexOf(label)
+          el.labels.splice(index, 1)
+        }
+      }
+      return el
+    })
+    this.setState( { messages: unlabeledMessages })
   }
 
   render(){
@@ -123,7 +138,8 @@ class Inbox extends Component {
           markAsUnread={ this.markAsUnread }
           deleteMessages={ this.deleteMessages }
           unreadCount={ this.unreadCount }
-          updateLabels={ this.updateLabels }
+          addLabels={ this.addLabels }
+          removeLabels={ this.removeLabels }
         />
         <MessageList
           messages={ this.state.messages }
