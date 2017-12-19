@@ -79,6 +79,16 @@ class Inbox extends Component {
     this.setState({ messages: unreadMessages })
   }
 
+  deleteMessages = () => {
+    let keptMessages = []
+    this.state.messages.map(el => {
+      if(!el.selected){
+        keptMessages.push(el)
+      }
+    })
+    this.setState( { messages: keptMessages })
+  }
+
   render(){
     return (
       <div className="container">
@@ -87,11 +97,14 @@ class Inbox extends Component {
           bulkSelect={ this.bulkSelect }
           isSelected={ this.isSelected }
           markAsRead={ this.markAsRead }
-          markAsUnread={ this.markAsUnread }/>
+          markAsUnread={ this.markAsUnread }
+          deleteMessages={ this.deleteMessages }
+        />
         <MessageList
           messages={ this.state.messages }
           toggleStar={ this.toggleStar }
-          toggleSelected={ this.toggleSelected }/>
+          toggleSelected={ this.toggleSelected }
+        />
       </div>
     )
   }

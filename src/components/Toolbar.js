@@ -27,6 +27,10 @@ class Toolbar extends Component {
     this.props.markAsUnread()
   }
 
+  deleteListen = () => {
+    this.props.deleteMessages()
+  }
+
   render(){
     return (
       <div className="row toolbar">
@@ -62,7 +66,7 @@ class Toolbar extends Component {
             <option value="gschool">gschool</option>
           </select>
 
-          <button className="btn btn-default">
+          <button onClick={ this.deleteListen } className="btn btn-default">
             <i className="fa fa-trash-o"></i>
           </button>
         </div>
