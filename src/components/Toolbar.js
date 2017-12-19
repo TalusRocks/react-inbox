@@ -23,6 +23,10 @@ class Toolbar extends Component {
     this.props.markAsRead()
   }
 
+  markAsUnreadListen = () => {
+    this.props.markAsUnread()
+  }
+
   render(){
     return (
       <div className="row toolbar">
@@ -40,7 +44,7 @@ class Toolbar extends Component {
             Mark As Read
           </button>
 
-          <button className="btn btn-default">
+          <button onClick={ this.markAsUnreadListen } className="btn btn-default">
             Mark As Unread
           </button>
 
