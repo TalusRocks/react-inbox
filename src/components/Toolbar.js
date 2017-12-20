@@ -43,6 +43,13 @@ class Toolbar extends Component {
     this.props.removeLabels(e.target.value)
   }
 
+  messageS = () => {
+    if(this.unreadNum() === 1){
+      return 'message'
+    } else {
+      return 'messages'
+    }
+  }
 
   render(){
     return (
@@ -50,7 +57,7 @@ class Toolbar extends Component {
         <div className="col-md-12">
           <p className="pull-right">
             <span className="badge badge">{ `${ this.unreadNum() }` } </span>
-            unread messages
+            unread { `${ this.messageS() }`}
           </p>
 
           <button onClick={ this.bulkSelectListen } className="btn btn-default">
