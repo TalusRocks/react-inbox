@@ -51,6 +51,14 @@ class Toolbar extends Component {
     }
   }
 
+  noneChecked = () => {
+    if(this.props.messages.some(this.props.isSelected)){
+      return ''
+    } else {
+      return 'disabled'
+    }
+  }
+
   render(){
     return (
       <div className="row toolbar">
@@ -60,33 +68,39 @@ class Toolbar extends Component {
             unread { `${ this.messageS() }`}
           </p>
 
-          <button onClick={ this.bulkSelectListen } className="btn btn-default">
+          <button onClick={ this.bulkSelectListen }
+            className="btn btn-default">
             <i className={`fa ${ this.bulkSelectStyle() }`}></i>
           </button>
 
-          <button onClick={ this.markAsReadListen } className="btn btn-default">
+          <button onClick={ this.markAsReadListen }
+            className={`btn btn-default ${this.noneChecked()}`}>
             Mark As Read
           </button>
 
-          <button onClick={ this.markAsUnreadListen } className="btn btn-default">
+          <button onClick={ this.markAsUnreadListen }
+            className={`btn btn-default ${this.noneChecked()}`}>
             Mark As Unread
           </button>
 
-          <select onChange={ this.addLabelValue } className="form-control label-select">
+          <select onChange={ this.addLabelValue }
+            className={`form-control label-select ${this.noneChecked()}`} disabled={`${this.noneChecked()}`}>
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <select onChange={ this.removeLabelValue } className="form-control label-select">
+          <select onChange={ this.removeLabelValue } className="form-control label-select"
+          disabled={`${this.noneChecked()}`}
+            >
             <option>Remove label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <button onClick={ this.deleteListen } className="btn btn-default">
+          <button onClick={ this.deleteListen } className={`btn btn-default ${this.noneChecked()}`}>
             <i className="fa fa-trash-o"></i>
           </button>
         </div>

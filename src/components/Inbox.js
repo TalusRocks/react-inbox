@@ -127,6 +127,7 @@ class Inbox extends Component {
     this.setState( { messages: unlabeledMessages })
   }
 
+
   render(){
     return (
       <div className="container">
